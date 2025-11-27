@@ -3,12 +3,12 @@
    ====================== */
 :root {
     --body: #38244C;
-    --cards: #FF149333;
+    --cards: #F4DDF3;
     --text: #000000;
 }
 
 /* =======================
-   2. RESET & BASE STYLES
+   2. BASE STYLES
    ======================= */
 * {
     box-sizing: border-box;
@@ -16,63 +16,88 @@
 }
 
 body {
-    padding: 10px;
+    margin: 0;
     background-color: var(--body);
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text);
 }
 
-/* ===================
-   3. LAYOUT (GRID)
-   =================== */
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
-    height: 100vh;
-
-    /* Definice výšky řádků */
-    /* 1. řádek (header): auto (výška je podle obsahu) */
-    /* 2. řádek: */
-    /* 3. řádek: */
-
-    grid-template-rows: auto 4fr 1.5fr;
-
-    /* Oblasti */
-    grid-template-areas: 
-    "header  header  header"
-    "ui      photo   port"
-    "about   contact port";
-}
-
-/* ======================
-   4. COMPONENTS (KARTY)
-   ====================== */
-.header-box {grid-area: header;}
-.ui-box {grid-area: ui;}
-.photo-box {grid-area: photo;}
-.portfolio-box {grid-area: port;}
-.about-box {grid-area: about;}
-.contact-box {grid-area: contact;}
-
-/* ======================
-   5. STYLING (KARTY)
-   ====================== */
-.header-box, .ui-box, .portfolio-box, .about-box, .contact-box {
+/* Barvy boxů */
+.header-box, .ui-box, .about-box, .contact-box, .portfolio-box, .photo-box, .footer-box {
     background-color: var(--cards);
     border-radius: 20px;
+}
+
+/* Zarovnání textů v boxech */
+.header-box, .ui-box, .about-box, .contact-box, .portfolio-box, .footer-box {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding: 20px;
 }
 
-.photo-box {
-    grid-area: photo;
-    border-radius: 20px;
-    overflow: hidden;
+/* Odstranění marginů */
+h1, h2, p {
+    margin: 0;
 }
 
-.photo-box img {
-    width: 100%;
+/* === HLAVNÍ OBAL (Drží celou výšku okna) === */
+.main-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* === 3. HLAVIČKA === */
+.header-box {
+    height: 80px;
+    flex-shrink: 0;
+}
+
+/* 4. === OBSAH === */
+.columns-container {
+    flex: 1; /* Roztáhne se do veškerého volného místa */
+    display: grid;
+    grid-template-columns: 1.6fr 1.3fr 1fr; /* 3 stejně široké sloupce */
+    gap: 20px; /* Mezera mezi sloupci */
+    min-height: 0;
+
+    /* POZN.: Výpočet Gridu */
+    /* Celková šířka 1.6 + 1.3 + 1.0 = 3.9 */
+    /* Levý sloupec 1.6 / 3.9 = cca 41% */
+    /* Center 1.3 / 3.9 = cca 33% */
+    /* Pravý sloupec 1.0 / 3.9 = cca 25% */
+}
+
+/* Nastavení uvnitř sloupců */
+.column {
+    display: flex;
+    flex-direction: column; /* Boxy pod sebou */
+    gap: 20px;
     height: 100%;
-    object-fit: cover;
 }
+
+/* === INDIVIDUÁLNÍ VÝŠKY BOXŮ === */
+/* Levý sloupec: UI o něco vyšší než About box */
+.left-col .ui-box {flex: 2;} /* 2/3 místa */
+.left-col .about-box {flex: 1;} /* 1/3 místa */
+
+/* Prostřední sloupec: Fotka a Contact box */
+.center-col .photo-box {flex: 5;} /* Fotka zabere 3/4 sloupce */
+.center-col .contact-box {flex: 1;} /* Kontakt zabere 1/4 sloupce */
+
+/* POZN.: Výpočet dílků */
+/* UIbox flex 2, ABOUTbox 1 -> 2 + 1 = 3. TZN. UIbox zabere 2/3 a ABOUTbox zabere 1/3 */
+/* Fotka má flex 3, Kontakt flex 1 -> 5 + 1 = 6. TZN. Fotka bere 5/6 místa a Kontakt 1/6 */
+
+/* Pravý sloupec: Portfolio má plnou výšku */
+.right-col .portfolio-box {height: 100%;}
+
+/* === 5. FOOTER === */
+.footer-box {
+    height: 40px;
+    flex-shrink: 0;
+} 
