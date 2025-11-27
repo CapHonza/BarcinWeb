@@ -49,6 +49,13 @@ h1, h2, p {
     flex-direction: column;
     padding: 20px;
     gap: 20px;
+
+    /* Zastropování šířky */
+    width: 100%; /* Normálně zabere vše */
+    max-width: 1400px; /* Maximálně 1400px */
+
+    /* Centrování celého webu doprostřed */
+    margin: 0 auto;
 }
 
 /* === 3. HLAVIČKA === */
@@ -61,7 +68,7 @@ h1, h2, p {
 .columns-container {
     flex: 1; /* Roztáhne se do veškerého volného místa */
     display: grid;
-    grid-template-columns: 1.6fr 1.3fr 1fr; /* 3 různě široké sloupce */
+    grid-template-columns: 1.4fr 1.3fr 1.3fr; /* 3 různě široké sloupce */
     gap: 20px; /* Mezera mezi sloupci */
     min-height: 0;
 
