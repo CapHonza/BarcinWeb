@@ -1,0 +1,78 @@
+/* ======================
+   1. VARIABLES & CONFIG 
+   ====================== */
+:root {
+    --body: #38244C;
+    --cards: #FF149333;
+    --text: #000000;
+}
+
+/* =======================
+   2. RESET & BASE STYLES
+   ======================= */
+* {
+    box-sizing: border-box;
+    /* Důležité pro Grid !!! */
+}
+
+body {
+    padding: 10px;
+    background-color: var(--body);
+}
+
+/* ===================
+   3. LAYOUT (GRID)
+   =================== */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    height: 100vh;
+
+    /* Definice výšky řádků */
+    /* 1. řádek (header): auto (výška je podle obsahu) */
+    /* 2. řádek: */
+    /* 3. řádek: */
+
+    grid-template-rows: auto 4fr 1.5fr;
+
+    /* Oblasti */
+    grid-template-areas: 
+    "header  header  header"
+    "ui      photo   port"
+    "about   contact port";
+}
+
+/* ======================
+   4. COMPONENTS (KARTY)
+   ====================== */
+.header-box {grid-area: header;}
+.ui-box {grid-area: ui;}
+.photo-box {grid-area: photo;}
+.portfolio-box {grid-area: port;}
+.about-box {grid-area: about;}
+.contact-box {grid-area: contact;}
+
+/* ======================
+   5. STYLING (KARTY)
+   ====================== */
+.header-box, .ui-box, .portfolio-box, .about-box, .contact-box {
+    background-color: var(--cards);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-box {
+    grid-area: photo;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
