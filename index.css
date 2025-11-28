@@ -18,8 +18,9 @@
 body {
     margin: 0;
     background-color: var(--body);
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Inria Serif;
     color: var(--text);
+    font-size: 24px;
 }
 
 /* Barvy boxů */
@@ -44,7 +45,7 @@ h1, h2, p {
 
 /* === HLAVNÍ OBAL (Drží celou výšku okna) === */
 .main-wrapper {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -121,3 +122,57 @@ h1, h2, p {
     height: 40px;
     flex-shrink: 0;
 } 
+
+/* Responsive Exceptions */
+/* Mobil & Tablet */
+@media (max-width: 1024px) {
+    /* 1. Hlavní obal - scrollování */
+    .main-wrapper {
+        height: auto;
+        padding: 10px;
+        display: block;
+    }
+
+    /* Kontejner na 1 sloupec místo 3 */
+    .columns-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Sloupce (Left, Center, Right) */
+    .column {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Změna výšky karet */
+    .ui-box, .about-box, .contact-box, .portfolio-box {
+        flex: none;
+        min-height: 200px;
+        width: 100%;
+    }
+
+    /* Portfolio je vyšší */
+    .portfolio-box {
+        min-height: 300px;
+    }
+
+    /* Fotka na mobilu by měla být velká */
+    .photo-box {
+        flex: none;
+        height: 400px;
+        width: 100%;
+    }
+
+    /* Header & Footer (mezery) */
+    .header-box {
+        margin-bottom: 20px;
+    }
+
+    .footer-box {
+        margin-top: 20px;
+        height: auto;
+        padding: 20px;
+    }
+}
