@@ -119,8 +119,9 @@ h1, h2, p {
 
 /* === 5. FOOTER === */
 .footer-box {
-    height: 40px;
+    height: 30px;
     flex-shrink: 0;
+    font-size: 18px;
 } 
 
 /* Responsive Exceptions */
@@ -172,7 +173,7 @@ h1, h2, p {
 
     .footer-box {
         margin-top: 20px;
-        height: auto;
+        height: 30px;
         padding: 20px;
     }
 }
