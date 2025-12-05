@@ -50,6 +50,11 @@ h1, h2, p {
     margin: 0 auto;
 }
 
+.home-btn:hover {
+    filter: brightness(0.95);
+    cursor: pointer;
+}
+
 /* Barvy boxů */
 .contact, .services {
     background-color: var(--cards);

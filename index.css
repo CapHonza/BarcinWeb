@@ -23,6 +23,11 @@ body {
     font-size: 24px;
 }
 
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
 /* Barvy boxů */
 .header-box, .ui-box, .about-box, .contact-box, .portfolio-box, .photo-box, .footer-box {
     background-color: var(--cards);
@@ -116,6 +121,12 @@ h1, h2, p {
 
 /* Pravý sloupec: Portfolio má plnou výšku */
 .right-col .portfolio-box {height: 100%;}
+
+/* Hover efekt pro tlačítka */
+.ui-box:hover, .about-box:hover, .contact-box:hover, .portfolio-box:hover {
+    filter: brightness(0.95);
+    cursor: pointer;
+}
 
 /* === 5. FOOTER === */
 .footer-box {
