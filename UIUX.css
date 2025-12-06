@@ -119,6 +119,7 @@ header, .ui-heading, .ui-text, .ux-heading, .ux-text {
 
 .ui-heading, .ux-heading {
     flex: 0.5;
+    min-height: 0;
 }
 
 .ui-text, .ux-text {
@@ -138,3 +139,37 @@ footer {
     flex-shrink: 0;
     font-size: 18px;
 } 
+
+/* Responsive Exceptions */
+/* Mobil & Tablet */
+@media (max-width: 1024px) {
+    /* 1. Hlavní obal - scrollování */
+    .main-wrapper {
+        height: auto;
+        padding: 10px;
+        display: block;
+    }
+
+    /* Kontejner na 1 sloupec místo 3 */
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .home-btn {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    /* Header & Footer (mezery) */
+    header {
+        margin-bottom: 20px;
+    }
+
+    footer {
+        margin-top: 20px;
+        height: 40px;
+        padding: 20px;
+    }
+}

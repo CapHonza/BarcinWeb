@@ -66,56 +66,48 @@ a { text-decoration: none; color: inherit; }
     height: 100%; 
 }
 
+/* === 4. FOOTER === */
+footer {
+    background-color: var(--cards);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center; /* Footer chceme fakt na střed */
+    align-items: center;
+    text-align: center;
+    padding: 0 20px; /* Jen boční padding */
+    height: 40px; /* Pevná výška */
+    flex-shrink: 0;
+    font-size: 18px;
+} 
 
 /* === 5. INDIVIDUÁLNÍ VÝŠKY (FLEX POMĚRY) - TADY JE OPRAVA === */
 
-/* A) HLAVNÍ ROZDĚLENÍ - Horní vs Spodní část */
-/* Fotka vlevo a Text vpravo musí mít STEJNÉ číslo (3), aby lícovaly */
-.text-box-top {
-    flex: 3; 
+/* Horní patro (Fotka + Horní text) */
+.photo-box, .text-box-top {
+    flex: none; /* Vypneme flex výpočty */
+    /* Natvrdo 62% výšky kontejneru (zbytek pro spodek) */
+    height: 62%; 
 }
 
-.photo-box {
-    flex: 2.6;
-}
-
-/* Obal tlačítek vlevo a Spodní text vpravo musí mít STEJNÉ číslo (1) */
+/* Spodní patro (Tlačítka + Spodní text) */
 .left-bottom-wrapper, .text-box-bottom {
-    flex: 1;
+    flex: none;
+    /* Zbytek do 100 % mínus mezera (cca 20px) */
+    height: calc(38% - 20px); 
 }
 
-/* B) NASTAVENÍ OBALU VLEVO DOLE */
+/* Nastavení obalu tlačítek */
 .left-bottom-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Mezera mezi tlačítky */
-    /* Výšku neřešíme, bere si "flex: 1" od rodiče */
+    gap: 20px;
 }
 
-/* C) STYLOVÁNÍ BOXŮ */
+/* Tlačítka uvnitř */
+.contact-box { flex: 2; background-color: var(--button); transition: transform 0.2s; }
+.home-box { flex: 1; background-color: var(--button); transition: transform 0.2s; }
 
-/* Reset fotky */
-.photo-box {
-    overflow: hidden;
-    padding: 0 !important;
-    border-radius: 20px;
-    background-color: var(--cards);
-}
-
-/* Tlačítka uvnitř obalu */
-.contact-box {
-    flex: 2; /* Kontakt je větší */
-    background-color: var(--button);
-    transition: transform 0.2s;
-}
-
-.home-box {
-    flex: 1; /* Home je menší */
-    background-color: var(--button);
-    transition: transform 0.2s;
-}
-
-/* Texty vpravo */
+/* Textové boxy */
 .text-box-top, .text-box-bottom {
     background-color: var(--cards);
     border-radius: 20px;
@@ -124,26 +116,17 @@ a { text-decoration: none; color: inherit; }
     align-items: center;
     text-align: center;
     padding: 20px;
+    overflow-y: auto; /* Kdyby se text nevešel, scroluje */
 }
+.text-box-top { font-size: 22px; }
 
-/* --- D) OSTATNÍ EFEKTY --- */
-
-/* Hover efekt */
-.contact-box:hover, .home-box:hover {
-    filter: brightness(0.95);
-    cursor: pointer;
-}
-
-/* Vnitřek tlačítek - zarovnání */
-.contact-box, .home-box {
+/* Fotka - reset */
+.photo-box {
+    overflow: hidden;
+    padding: 0 !important;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    background-color: var(--cards);
 }
-
-/* Obrázek */
 .photo-box img {
     width: 100%;
     height: 100%;
@@ -151,26 +134,74 @@ a { text-decoration: none; color: inherit; }
     display: block;
 }
 
-/* === 6. FOOTER === */
-footer {
-    background-color: var(--cards);
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    flex-shrink: 0;
-    font-size: 18px;
-}
+/* Hover efekty */
+.contact-box:hover, .home-box:hover { filter: brightness(0.95); cursor: pointer; }
+.contact-box, .home-box { border-radius: 20px; display: flex; justify-content: center; align-items: center; text-align: center; }
 
-/* === MOBILNÍ VERZE === */
+
+/* =========================================
+   MOBILNÍ VERZE & TABLET (Oprava mezer a footeru)
+   ========================================= */
 @media (max-width: 1024px) {
-    .container {
+    
+    /* 1. OPRAVA FOOTERU A VÝŠKY */
+    .main-wrapper {
+        min-height: 0; /* Zrušit fixní minimum */
+        height: auto;  /* Povolit natahování stránky */
         display: flex;
         flex-direction: column;
     }
+
+    /* 2. JEDNOTNÉ MEZERY (GAP) */
+    .container {
+        display: flex;
+        flex-direction: column;
+        height: auto;      /* Už ne fixní výška */
+        gap: 20px;         /* TOTO JE TA JEDINÁ MEZERA, KTERÁ BUDE PLATIT VŠUDE */
+        flex: none;        /* Kontejner se nebude roztahovat do prostoru */
+    }
+
+    /* 3. ROZPUŠTĚNÍ SLOUPCŮ */
+    .left-column, .right-column {
+        display: contents; /* Sloupce zmizí, děti (boxy) spadnou přímo do containeru */
+    }
+
+    /* 4. NASTAVENÍ BOXŮ (Všechny stejně) */
+    /* Žádné marginy! O vše se stará gap nahoře */
+    .photo-box, 
+    .text-box-top, 
+    .text-box-bottom, 
+    .left-bottom-wrapper {
+        width: 100%;
+        flex: none;
+        height: auto; /* Výška podle obsahu */
+        margin: 0;    /* ŽÁDNÉ MARGINY = ŽÁDNÉ DIVNÉ MEZERY */
+    }
+
+    /* 5. PŘESKLÁDÁNÍ (ORDER) */
     
-    .photo-box { height: 400px; flex: none; width: 100%; }
-    .contact-box, .home-box { height: 100px; flex: none; width: 100%; }
-    .text-box-top, .text-box-bottom { min-height: 250px; height: auto; flex: none; width: 100%;}
+    /* A) Fotka (První) */
+    .photo-box {
+        order: 1;
+        aspect-ratio: 1 / 1; /* Čtverec, aby nebyla uříznutá hlava */
+    }
+
+    /* B) Horní text (Druhý) */
+    .text-box-top {
+        order: 2;
+        min-height: 200px;
+    }
+
+    /* C) Spodní text (Třetí) */
+    .text-box-bottom {
+        order: 3;
+        min-height: 150px;
+    }
+
+    /* D) Tlačítka (Poslední) */
+    .left-bottom-wrapper {
+        order: 4;
+        height: 200px; /* Tlačítkům necháme fixní výšku, ať jsou hezky velká */
+        /* Gap 20px mezi tlačítky už je definován v desktop sekci a platí i tady */
+    }
 }
