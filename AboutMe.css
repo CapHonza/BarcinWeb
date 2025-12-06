@@ -139,9 +139,7 @@ footer {
 .contact-box, .home-box { border-radius: 20px; display: flex; justify-content: center; align-items: center; text-align: center; }
 
 
-/* =========================================
-   MOBILNÍ VERZE & TABLET (Oprava mezer a footeru)
-   ========================================= */
+/* Responsive Exceptions*/
 @media (max-width: 1024px) {
     
     /* 1. OPRAVA FOOTERU A VÝŠKY */
@@ -156,7 +154,7 @@ footer {
     .container {
         display: flex;
         flex-direction: column;
-        height: auto;      /* Už ne fixní výška */
+        height: auto;      
         gap: 20px;         /* TOTO JE TA JEDINÁ MEZERA, KTERÁ BUDE PLATIT VŠUDE */
         flex: none;        /* Kontejner se nebude roztahovat do prostoru */
     }
