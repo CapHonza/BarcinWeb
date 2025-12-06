@@ -170,10 +170,9 @@ h1, h2, p {
         min-height: 300px;
     }
 
-    /* Fotka na mobilu by měla být velká */
     .photo-box {
         flex: none;
-        height: 400px;
+        height: auto;
         width: 100%;
     }
 
