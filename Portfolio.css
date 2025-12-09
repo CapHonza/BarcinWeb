@@ -1,0 +1,49 @@
+/* ======================
+   1. VARIABLES & CONFIG 
+   ====================== */
+:root {
+    --body: #38244C;
+    --cards: #F4DDF3;
+    --text: #000000;
+    --button: #FFC5FC;
+}
+
+/* =======================
+   2. BASE STYLES
+   ======================= */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background-color: var(--body);
+    font-family: Inria Serif, serif;
+    color: var(--text);
+    font-size: 24px;
+}
+
+h1, h2, p { margin: 0; }
+a { text-decoration: none; color: inherit; }
+
+
+/* === HLAVNÍ OBAL === */
+.main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* === 3. HLAVIČKA === */
+.header-box {
+    height: 80px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cards);
+    border-radius: 20px;
+}
