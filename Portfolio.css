@@ -61,7 +61,7 @@ header {
 }
 
 /* Barvy boxů */
-nav, .grid-gallery {
+.grid-gallery {
     background-color: var(--cards);
     border-radius: 20px;
 }
@@ -72,6 +72,14 @@ nav {
     justify-content: flex-start;
     align-items: center;
     text-align: center;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+hr {
+    width: 90%;
+    color: white;
+    margin-top: 40px;
 }
 
 .nav-button {
@@ -174,5 +182,9 @@ footer {
 
     footer {
         margin-top: 20px;
+    }
+
+    hr {
+        display: none;
     }
 }
