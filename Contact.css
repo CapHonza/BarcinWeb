@@ -2,10 +2,10 @@
    1. VARIABLES & CONFIG 
    ====================== */
 :root {
-    --body: #38244C;
-    --cards: #F4DDF3;
+    --body: #2d213d;
+    --cards: #FFF5EE;
     --text: #000000;
-    --button: #FFC5FC;
+    --button: #dfb5bc;
 }
 
 /* =======================
